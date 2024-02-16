@@ -5,7 +5,6 @@ import Table from "./components/Table/Table";
 
 function App() {
   const [contacts, setContacts] = useState([]);
-  console.log(contacts);
 
   const getContact = (contact) => {
     setContacts([contact, ...contacts]);
