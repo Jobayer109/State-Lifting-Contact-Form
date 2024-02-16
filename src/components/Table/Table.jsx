@@ -1,21 +1,27 @@
 /* eslint-disable no-unused-vars */
 
 import { useState } from "react";
+import InputField from "../Contacts/InputField";
 
 /* eslint-disable react/prop-types */
 const Table = ({ contacts }) => {
   const [filtered, setFiltered] = useState("all");
+  const [searchTerm, setSearchTerm] = useState("");
+  console.log(searchTerm);
 
-  const handleFilter = (e) => {
-    setFiltered(e.target.value);
-  };
+  // Search and filter operation
+  const searchFunc = (contact) =>
+    contact.name.includes(searchTerm) || contact.email.includes(searchTerm);
 
   let filteredContacts = [];
   if (filtered === "all") {
-    filteredContacts = contacts;
+    filteredContacts = searchTerm ? contacts.filter(searchFunc) : contacts;
   } else {
-    filteredContacts = contacts.filter((contact) => contact.group === filtered);
+    filteredContacts = contacts.filter(
+      (contact) => contact.group === filtered && searchFunc(contact)
+    );
   }
+
   return (
     <>
       <div style={{ margin: "1rem" }}>
@@ -24,14 +30,23 @@ const Table = ({ contacts }) => {
           value={filtered}
           name="filter"
           id="filter"
-          onChange={handleFilter}
+          onChange={(e) => setFiltered(e.target.value)}
         >
           <option value="">None</option>
+          <option value="all">All</option>
           <option value="Home">Home</option>
           <option value="Office">Office</option>
           <option value="Family">Family</option>
           <option value="Business">Business</option>
         </select>
+
+        <InputField
+          label="Search: "
+          name="search"
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
       </div>
       <div>
         {" "}
