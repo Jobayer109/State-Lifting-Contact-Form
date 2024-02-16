@@ -7,12 +7,13 @@ const CONTACT_INIT_STATE = {
   id: shortid.generate(),
   name: "",
   email: "",
+  group: "",
 };
 
 const ContactForm = ({ getContact }) => {
   const [contact, setContact] = useState({ ...CONTACT_INIT_STATE });
 
-  const { name, email } = contact;
+  const { name, email, group } = contact;
 
   const handleChange = (e) => {
     setContact({
@@ -36,7 +37,6 @@ const ContactForm = ({ getContact }) => {
         value={name}
         onChange={handleChange}
       />{" "}
-      <br />
       <InputField
         label="Email:"
         type="email"
@@ -44,7 +44,18 @@ const ContactForm = ({ getContact }) => {
         value={email}
         onChange={handleChange}
       />{" "}
-      <br />
+      <div>
+        <label htmlFor="group">Group:</label>
+        <select name="group" id="group" value={group} onChange={handleChange}>
+          <option value="" disabled>
+            Select One
+          </option>
+          <option value="Home">Home</option>
+          <option value="Office">Office</option>
+          <option value="Family">Family</option>
+          <option value="Business">Business</option>
+        </select>
+      </div>{" "}
       <button type="submit">Submit</button>
     </form>
   );

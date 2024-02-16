@@ -12,7 +12,7 @@ function App() {
 
   return (
     <>
-      <h1>Explore state lifting</h1>
+      <h1>My Contact App</h1>
       <ContactForm getContact={getContact} />
       <Table contacts={contacts} />
     </>
