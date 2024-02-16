@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import shortid from "shortid";
 import InputField from "./InputField";
@@ -8,8 +9,10 @@ const CONTACT_INIT_STATE = {
   email: "",
 };
 
-const ContactForm = () => {
+const ContactForm = ({ getContact }) => {
   const [contact, setContact] = useState({ ...CONTACT_INIT_STATE });
+
+  const { name, email } = contact;
 
   const handleChange = (e) => {
     setContact({
@@ -20,7 +23,7 @@ const ContactForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(contact);
+    getContact(contact);
     setContact(CONTACT_INIT_STATE);
   };
 
@@ -30,7 +33,7 @@ const ContactForm = () => {
         label="Name:"
         type="text"
         name="name"
-        value={contact.name}
+        value={name}
         onChange={handleChange}
       />{" "}
       <br />
@@ -38,7 +41,7 @@ const ContactForm = () => {
         label="Email:"
         type="email"
         name="email"
-        value={contact.email}
+        value={email}
         onChange={handleChange}
       />{" "}
       <br />
