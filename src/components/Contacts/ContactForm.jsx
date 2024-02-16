@@ -1,10 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import shortid from "shortid";
 import InputField from "./InputField";
 
 const CONTACT_INIT_STATE = {
-  id: shortid.generate(),
   name: "",
   email: "",
   group: "",
