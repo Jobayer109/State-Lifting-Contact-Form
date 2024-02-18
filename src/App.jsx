@@ -1,10 +1,11 @@
 import "./App.css";
-import MainHome from "./components";
+import PracticeHome from "./practice";
 
 function App() {
   return (
     <div>
-      <MainHome />
+      {/* <MainHome /> */}
+      <PracticeHome />
     </div>
   );
 }
