@@ -4,9 +4,9 @@ import "./style.css";
 const PracticeHome = () => {
   return (
     <div className="practiceApp">
-      <h2>Practice State lifting by Form & Table</h2>
+      <h2>Practice State lifting by Form</h2>
+      <hr style={{ marginTop: ".5rem", marginBottom: ".5rem" }} />
       <Form />
-      <hr />
     </div>
   );
 };

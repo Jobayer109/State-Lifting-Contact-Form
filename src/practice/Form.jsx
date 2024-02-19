@@ -16,9 +16,14 @@ const Form = () => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(values);
+  };
+
   return (
     <div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <InputText
           label="Name"
           type="text"
@@ -33,6 +38,9 @@ const Form = () => {
           value={values.email}
           onChange={handleChange}
         />
+
+        <select></select>
+
         <button type="submit">Create contact</button>
       </form>
     </div>
