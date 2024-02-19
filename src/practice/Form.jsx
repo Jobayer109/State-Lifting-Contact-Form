@@ -1,13 +1,17 @@
+/* eslint-disable react/prop-types */
 import { useState } from "react";
 import InputText from "./InputText";
 
 const INIT_CONTACT = {
   name: "",
   email: "",
+  group: "",
 };
 
-const Form = () => {
+const Form = ({ getContact }) => {
   const [values, setValues] = useState({ ...INIT_CONTACT });
+
+  const { name, email, group } = values;
 
   const handleChange = (e) => {
     setValues({
@@ -20,7 +24,7 @@ const Form = () => {
     e.preventDefault();
 
     setValues(INIT_CONTACT);
-    console.log(values);
+    getContact(values);
   };
 
   return (
@@ -30,26 +34,21 @@ const Form = () => {
           label="Name"
           type="text"
           name="name"
-          value={values.name}
+          value={name}
           onChange={handleChange}
         />
         <InputText
           label="Email"
           type="email"
           name="email"
-          value={values.email}
+          value={email}
           onChange={handleChange}
         />
 
         <div>
-          <label htmlFor="group">Group</label>
-          <select
-            name="group"
-            id="group"
-            value="Select One"
-            onChange={handleChange}
-          >
-            <option defaultValue="">Select One</option>
+          <label>Group</label>
+          <select name="group" id="group" value={group} onChange={handleChange}>
+            <option value="">Select One</option>
             <option value="Office">Office</option>
             <option value="Home">Home</option>
             <option value="Family">Family</option>
