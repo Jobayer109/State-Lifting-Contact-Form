@@ -18,6 +18,8 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setValues(INIT_CONTACT);
     console.log(values);
   };
 
@@ -39,7 +41,21 @@ const Form = () => {
           onChange={handleChange}
         />
 
-        <select></select>
+        <div>
+          <label htmlFor="group">Group</label>
+          <select
+            name="group"
+            id="group"
+            value="Select One"
+            onChange={handleChange}
+          >
+            <option defaultValue="">Select One</option>
+            <option value="Office">Office</option>
+            <option value="Home">Home</option>
+            <option value="Family">Family</option>
+            <option value="Business">Business</option>
+          </select>
+        </div>
 
         <button type="submit">Create contact</button>
       </form>
