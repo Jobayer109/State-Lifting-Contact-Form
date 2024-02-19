@@ -7,7 +7,6 @@ import InputField from "../Contacts/InputField";
 const Table = ({ contacts }) => {
   const [filtered, setFiltered] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
-  console.log(searchTerm);
 
   // Search and filter operation
   const searchFunc = (contact) =>

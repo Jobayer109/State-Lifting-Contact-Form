@@ -15,6 +15,9 @@ const PracticeHome = () => {
       <h2>Practice State lifting by Form</h2>
       <hr style={{ marginTop: ".5rem", marginBottom: ".5rem" }} />
       <Form getContact={getContact} />
+      <br />
+      <hr />
+      <br />
       <TableView contacts={contacts} />
     </div>
   );
